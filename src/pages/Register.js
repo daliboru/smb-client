@@ -38,57 +38,6 @@ const Register = (props) => {
       {loading ? (
         <div className='loader'></div>
       ) : (
-        // <Form onSubmit={onSubmit} noValidate>
-        //   <h1>Registruj startup</h1>
-        //   <Form.Input
-        //     label='Username'
-        //     placeholder='Username'
-        //     name='username'
-        //     value={values.username}
-        //     onChange={onChange}
-        //     type='text'
-        //     error={errors.username ? true : false}
-        //   />
-        //   <Form.Input
-        //     label='Email'
-        //     placeholder='Email'
-        //     name='email'
-        //     value={values.email}
-        //     onChange={onChange}
-        //     type='text'
-        //     error={errors.email ? true : false}
-        //   />
-        //   <Form.Input
-        //     label='Ime Startupa'
-        //     placeholder='Company'
-        //     name='company'
-        //     value={values.company}
-        //     onChange={onChange}
-        //     type='text'
-        //     error={errors.company ? true : false}
-        //   />
-        //   <Form.Input
-        //     label='Šifra'
-        //     placeholder='Šifra'
-        //     name='password'
-        //     value={values.password}
-        //     onChange={onChange}
-        //     type='password'
-        //     error={errors.password ? true : false}
-        //   />
-        //   <Form.Input
-        //     label='Potvrdi Šifru'
-        //     placeholder='Potvrdi Šifru'
-        //     name='confirmPassword'
-        //     value={values.confirmPassword}
-        //     onChange={onChange}
-        //     type='password'
-        //     error={errors.confirmPassword ? true : false}
-        //   />
-        //   <Button type='submit' primary>
-        //     Registracija
-        //   </Button>
-        // </Form>
         <div className='min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 absolute w-screen top-0'>
           <div className='max-w-md w-full space-y-8'>
             <div>
@@ -98,7 +47,7 @@ const Register = (props) => {
                 alt='Workflow'
               />
               <h2 className='mt-6 text-center text-3xl font-extrabold text-gray-900'>
-                Napravite novi profil
+                Registrujte startup
               </h2>
             </div>
             <form className='mt-8 space-y-6' onSubmit={onSubmit}>
@@ -154,8 +103,8 @@ const Register = (props) => {
                 </div>
                 <div>
                   <input
-                    label='Potvrdi Šifra'
-                    placeholder='Potvrdi Šifra'
+                    label='Potvrdi Šifru'
+                    placeholder='Potvrdi Šifu'
                     name='confirmPassword'
                     value={values.confirmPassword}
                     onChange={onChange}
