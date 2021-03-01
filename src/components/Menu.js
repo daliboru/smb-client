@@ -1203,16 +1203,16 @@ To: "opacity-0 scale-95"
                   to='/register'
                   className='w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'
                 >
-                  Sign up
+                  Prijava
                 </Link>
                 <p className='mt-6 text-center text-base font-medium text-gray-500'>
-                  Existing customer?{' '}
+                  Niste registrovani?{' '}
                   <Link
                     onClick={() => setIsMobileMenu(false)}
                     to='/login'
                     className='text-indigo-600 hover:text-indigo-500'
                   >
-                    Sign in
+                    Registracija
                   </Link>
                 </p>
               </div>
@@ -1225,52 +1225,5 @@ To: "opacity-0 scale-95"
 
   return menuBar;
 };
-// const MenuBar = () => {
-//   const { user, logout } = useContext(AuthContext);
-//   const pathname = window.location.pathname;
-//   const path = pathname === '/' ? 'poslovi' : pathname.substr(1);
-//   const [activeItem, setActiveItem] = useState(path);
-
-//   const handleItemClick = (e, { name }) => setActiveItem(name);
-
-//   const menuBar = user ? (
-//     <Menu pointing secondary size='massive' color='blue'>
-//       <Menu.Item name={user.company} active as={Link} to='/' />
-
-//       <Menu.Menu position='right'>
-//         <Menu.Item name='odjava' onClick={logout} />
-//       </Menu.Menu>
-//     </Menu>
-//   ) : (
-//     <Menu pointing secondary size='massive' color='blue'>
-//       <Menu.Item
-//         name='poslovi'
-//         active={activeItem === 'poslovi'}
-//         onClick={handleItemClick}
-//         as={Link}
-//         to='/'
-//       />
-
-//       <Menu.Menu position='right'>
-//         <Menu.Item
-//           name='prijava'
-//           active={activeItem === 'prijava'}
-//           onClick={handleItemClick}
-//           as={Link}
-//           to='/login'
-//         />
-//         <Menu.Item
-//           name='registracija'
-//           active={activeItem === 'registracija'}
-//           onClick={handleItemClick}
-//           as={Link}
-//           to='/register'
-//         />
-//       </Menu.Menu>
-//     </Menu>
-//   );
-
-//   return menuBar;
-// };
 
 export default MenuBar;
