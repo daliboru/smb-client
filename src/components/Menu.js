@@ -1200,7 +1200,7 @@ To: "opacity-0 scale-95"
               <div>
                 <Link
                   onClick={() => setIsMobileMenu(false)}
-                  to='/register'
+                  to='/login'
                   className='w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'
                 >
                   Prijava
@@ -1209,7 +1209,7 @@ To: "opacity-0 scale-95"
                   Niste registrovani?{' '}
                   <Link
                     onClick={() => setIsMobileMenu(false)}
-                    to='/login'
+                    to='/register'
                     className='text-indigo-600 hover:text-indigo-500'
                   >
                     Registracija
@@ -1225,5 +1225,4 @@ To: "opacity-0 scale-95"
 
   return menuBar;
 };
-
 export default MenuBar;
