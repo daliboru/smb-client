@@ -31,7 +31,9 @@ const Home = () => {
         <section className='text-gray-600 body-font'>
           <div className='container py-24 mx-auto'>
             {loading ? (
-              <div className='loader'></div>
+              <h2 className='text-base text-indigo-600 font-semibold tracking-wide uppercase'>
+                Loading...
+              </h2>
             ) : (
               <div className='flex flex-wrap -m-4'>
                 {posts &&
