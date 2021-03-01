@@ -135,7 +135,7 @@ const Register = (props) => {
                       />
                     </svg>
                   </span>
-                  Prijavite se
+                  Registrujte
                 </button>
               </div>
             </form>
