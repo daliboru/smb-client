@@ -133,7 +133,7 @@ const Login = (props) => {
                       />
                     </svg>
                   </span>
-                  Prijavite se
+                  Prijavite
                 </button>
               </div>
             </form>
