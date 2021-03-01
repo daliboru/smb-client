@@ -49,12 +49,12 @@ const Login = (props) => {
                 Pijavite se na profil startupa
               </h2>
               <p className='mt-2 text-center text-sm text-gray-600'>
-                Nemate profil?{' '}
+                Vaš startup nije registrovan?{' '}
                 <Link
                   to='/register'
                   className='font-medium text-indigo-600 hover:text-indigo-500'
                 >
-                  Napravi profil
+                  Registrujte startup
                 </Link>
               </p>
             </div>
@@ -133,7 +133,7 @@ const Login = (props) => {
                       />
                     </svg>
                   </span>
-                  Prijavite
+                  Prijavite se
                 </button>
               </div>
             </form>
