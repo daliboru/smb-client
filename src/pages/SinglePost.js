@@ -18,7 +18,15 @@ const SinglePost = (props) => {
   let postMarkup;
 
   if (!getPost) {
-    postMarkup = <div className='loader'></div>;
+    postMarkup = (
+      <main className='bg-gray-100 h-auto min-h-screen w-screen absolute top-0'>
+        <div class='max-w-7xl mx-auto sm:px-6 lg:px-8 py-32'>
+          <p className='mt-2 my-auto text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl'>
+            Loading...
+          </p>
+        </div>
+      </main>
+    );
   } else {
     const {
       id,
@@ -107,33 +115,6 @@ const SinglePost = (props) => {
           </div>
         </div>
       </main>
-
-      // <Grid>
-      //   <Grid.Row>
-      //     <Grid.Column width={2}>
-      //       <Image
-      //         size='small'
-      //         src='https://www.dencrypt.dk/wp-content/uploads/2019/04/2018-18-Job-Icon.png'
-      //         float='right'
-      //       />
-      //     </Grid.Column>
-      //     <Grid.Column width={10}>
-      //       <Card fluid>
-      //         <Card.Content>
-      //           <Card.Header>{position}</Card.Header>
-      //           <Card.Meta>{moment(createAt).fromNow()}</Card.Meta>
-      //           <Card.Description>{body}</Card.Description>
-      //         </Card.Content>
-      //         <hr />
-      //         <Card.Content extra>
-      //           {user && user.username === username && (
-      //             <DeleteButton postId={id} callback={deletePostCallback} />
-      //           )}
-      //         </Card.Content>
-      //       </Card>
-      //     </Grid.Column>
-      //   </Grid.Row>
-      // </Grid>
     );
   }
 

@@ -25,3 +25,7 @@
 .newpost:hover {
   color: rgba(5, 150, 105, var(--tw-bg-opacity));
 }
+
+.card {
+  min-height: 19rem;
+}

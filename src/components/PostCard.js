@@ -13,13 +13,36 @@ const PostCard = ({
 
   return (
     <div className='xl:w-1/4 md:w-1/2 p-4'>
-      <div className='bg-gray-100 p-6 rounded-lg'>
+      <div className='bg-gray-100 p-4 rounded-lg card'>
         <Link to={`/posts/${id}`}>
-          <img
-            className='h-40 rounded w-full object-cover object-center mb-6'
-            src='https://dummyimage.com/720x400'
-            alt='content'
-          />
+          {username === 'levi9' && (
+            <img
+              className='h-40 rounded w-full object-cover object-center mb-2'
+              src='https://media.itkonekt.com/2018/02/levi9-logo.png'
+              alt='content'
+            />
+          )}
+          {username === 'vegait' && (
+            <img
+              className='h-40 rounded w-full object-cover object-center mb-2'
+              src='http://rtvsantos.com/wp-content/uploads/2016/10/vega-it-sourcing-logo-400x220.png'
+              alt='content'
+            />
+          )}
+          {username === 'vivifty' && (
+            <img
+              className='h-40 rounded w-full object-cover object-center mb-2'
+              src='https://www.vivifyideas.com/images/how-we-work/project-preparation-lg.jpg'
+              alt='content'
+            />
+          )}
+          {username === 'google' && (
+            <img
+              className='h-40 rounded w-full object-cover object-center mb-2'
+              src='https://searchengineland.com/figz/wp-content/seloads/2015/09/google-logo-blue-slant-1920.jpg'
+              alt='content'
+            />
+          )}
         </Link>
         <Link
           className='tracking-widest text-indigo-500 text-xs font-medium title-font'
