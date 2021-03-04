@@ -7,7 +7,7 @@ import { AuthContext } from '../context/auth';
 import DeleteButton from './DeleteButton';
 
 const PostCard = ({
-  post: { company, position, username, id, createdAt, imageUrl },
+  post: { company, position, username, id, createdAt, imageUrl, email },
 }) => {
   const { user } = useContext(AuthContext);
   console.log(imageUrl);
