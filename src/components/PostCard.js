@@ -33,7 +33,7 @@ const PostCard = ({
         <p className='leading-relaxed text-base'>
           <span className='date'>{moment(createdAt).fromNow(true)} ago</span>
         </p>
-        {user && user.username === username && <DeleteButton postId={id} />}
+        {user && user.email === email && <DeleteButton postId={id} />}
       </div>
     </div>
     // <div className='xl:w-1/4 md:w-1/2 p-4'>
