@@ -43,8 +43,7 @@ export const REGISTER_STARTUP = gql`
     $fundingStage: String!
   ) {
     startupRegister(
-      registerInput: {
-        username: $username
+      startupRegisterInput: {
         email: $email
         company: $company
         password: $password
