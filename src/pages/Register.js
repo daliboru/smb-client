@@ -1,24 +1,27 @@
 import { useContext, useState } from 'react';
-import { Button, Form } from 'semantic-ui-react';
 import { useMutation } from '@apollo/client';
 
 import { AuthContext } from '../context/auth';
 import { useForm } from '../utils/hooks';
-import { REGISTER_USER } from '../utils/graphql';
+import { REGISTER_STARTUP } from '../utils/graphql';
 
 const Register = (props) => {
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
 
   const { onChange, onSubmit, values } = useForm(registerUser, {
-    username: '',
+    email: '',
     password: '',
     confirmPassword: '',
-    email: '',
     company: '',
+    imageUrl: '',
+    industry: '',
+    location: '',
+    growthStage: '',
+    fundingStage: '',
   });
 
-  const [addUser, { loading }] = useMutation(REGISTER_USER, {
+  const [addUser, { loading }] = useMutation(REGISTER_STARTUP, {
     update(_, { data: { register: userData } }) {
       context.login(userData);
       props.history.push('/');
@@ -55,18 +58,6 @@ const Register = (props) => {
               <div className='rounded-md shadow-sm -space-y-px'>
                 <div>
                   <input
-                    label='Username'
-                    placeholder='Username'
-                    name='username'
-                    value={values.username}
-                    onChange={onChange}
-                    type='text'
-                    error={errors.username ? true : false}
-                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
-                  />
-                </div>
-                <div>
-                  <input
                     label='Email'
                     placeholder='Email'
                     name='email'
@@ -86,6 +77,66 @@ const Register = (props) => {
                     onChange={onChange}
                     type='text'
                     error={errors.company ? true : false}
+                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                  />
+                </div>
+                <div>
+                  <input
+                    label='ImageUrl'
+                    placeholder='Url fotografije loga firme'
+                    name='imageUrl'
+                    value={values.imageUrl}
+                    onChange={onChange}
+                    type='text'
+                    error={errors.imageUrl ? true : false}
+                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                  />
+                </div>
+                <div>
+                  <input
+                    label='Industry'
+                    placeholder='Industrija startupa'
+                    name='industry'
+                    value={values.industry}
+                    onChange={onChange}
+                    type='text'
+                    error={errors.industry ? true : false}
+                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                  />
+                </div>
+                <div>
+                  <input
+                    label='Location'
+                    placeholder='Lokacija startupa'
+                    name='location'
+                    value={values.location}
+                    onChange={onChange}
+                    type='text'
+                    error={errors.location ? true : false}
+                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                  />
+                </div>
+                <div>
+                  <input
+                    label='GrowthStage'
+                    placeholder='Growth stage'
+                    name='growthStage'
+                    value={values.growthStage}
+                    onChange={onChange}
+                    type='text'
+                    error={errors.growthStage ? true : false}
+                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                  />
+                </div>
+                <div>
+                  <input
+                    label='FundingStage'
+                    placeholder='Funding stage'
+                    name='fundingStage'
+                    value={values.fundingStage}
+                    onChange={onChange}
+                    type='text'
+                    error={errors.fundingStage ? true : false}
                     className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                   />
                 </div>

@@ -1,10 +1,9 @@
 import { useContext, useState } from 'react';
-import { Button, Form } from 'semantic-ui-react';
 import { useMutation } from '@apollo/client';
 
 import { AuthContext } from '../context/auth';
 import { useForm } from '../utils/hooks';
-import { LOGIN_USER } from '../utils/graphql';
+import { LOGIN_STARTUP } from '../utils/graphql';
 import { Link } from 'react-router-dom';
 
 const Login = (props) => {
@@ -12,11 +11,11 @@ const Login = (props) => {
   const [errors, setErrors] = useState({});
 
   const { onChange, onSubmit, values } = useForm(loginUserCallback, {
-    username: '',
+    email: '',
     password: '',
   });
 
-  const [loginUser, { loading }] = useMutation(LOGIN_USER, {
+  const [loginUser, { loading }] = useMutation(LOGIN_STARTUP, {
     update(_, { data: { login: userData } }) {
       context.login(userData);
       props.history.push('/');
@@ -63,14 +62,14 @@ const Login = (props) => {
               <div className='rounded-md shadow-sm -space-y-px'>
                 <div>
                   <input
-                    id='username'
-                    label='Username'
-                    placeholder='Username'
-                    name='username'
-                    value={values.username}
+                    id='email'
+                    label='Email'
+                    placeholder='Email'
+                    name='email'
+                    value={values.email}
                     onChange={onChange}
                     type='text'
-                    error={errors.username ? true : false}
+                    error={errors.email ? true : false}
                     className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                   />
                 </div>

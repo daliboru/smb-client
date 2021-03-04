@@ -13,26 +13,34 @@ export const FETCH_POSTS_QUERY = gql`
   }
 `;
 
-export const LOGIN_USER = gql`
+export const LOGIN_STARTUP = gql`
   mutation login($username: String!, $password: String!) {
     login(username: $username, password: $password) {
       id
       email
-      username
       company
       createdAt
       token
+      imageUrl
+      industry
+      location
+      growthStage
+      fundingStage
     }
   }
 `;
 
-export const REGISTER_USER = gql`
+export const REGISTER_STARTUP = gql`
   mutation register(
-    $username: String!
     $email: String!
     $company: String!
     $password: String!
     $confirmPassword: String!
+    $imageUrl: String!
+    $industry: String!
+    $location: String!
+    $growthStage: String!
+    $fundingStage: String!
   ) {
     register(
       registerInput: {
@@ -41,14 +49,23 @@ export const REGISTER_USER = gql`
         company: $company
         password: $password
         confirmPassword: $confirmPassword
+        imageUrl: $imageUrl
+        industry: $industry
+        location: $location
+        growthStage: $growthStage
+        fundingStage: $fundingStage
       }
     ) {
       id
       email
-      username
       company
       createdAt
       token
+      imageUrl
+      industry
+      location
+      growthStage
+      fundingStage
     }
   }
 `;
