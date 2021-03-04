@@ -10,7 +10,7 @@ const PostCard = ({
   post: { company, position, username, id, createdAt, imageUrl, email },
 }) => {
   const { user } = useContext(AuthContext);
-  console.log(imageUrl);
+
   return (
     <div className='xl:w-1/4 md:w-1/2 p-4'>
       <div className='bg-gray-100 p-4 rounded-lg card'>

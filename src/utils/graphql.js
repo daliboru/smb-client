@@ -9,6 +9,7 @@ export const FETCH_POSTS_QUERY = gql`
       position
       createdAt
       imageUrl
+      email
     }
   }
 `;
