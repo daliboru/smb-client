@@ -1,4 +1,3 @@
-import { Form, Button } from 'semantic-ui-react';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import { Editor } from '@tinymce/tinymce-react';
@@ -217,13 +216,17 @@ const NewPost = (props) => {
 const CREATE_POST_MUTATION = gql`
   mutation createPost($body: String!, $position: String!, $mailto: String!) {
     createPost(body: $body, position: $position, mailto: $mailto) {
-      username
       id
       createdAt
       body
       company
       position
       mailto
+      imageUrl
+      industry
+      location
+      growthStage
+      fundingStage
     }
   }
 `;

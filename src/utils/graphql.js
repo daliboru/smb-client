@@ -8,14 +8,14 @@ export const FETCH_POSTS_QUERY = gql`
       company
       position
       createdAt
-      username
+      imageUrl
     }
   }
 `;
 
 export const LOGIN_STARTUP = gql`
-  mutation login($username: String!, $password: String!) {
-    login(username: $username, password: $password) {
+  mutation startupLogin($email: String!, $password: String!) {
+    startupLogin(email: $email, password: $password) {
       id
       email
       company
@@ -31,26 +31,26 @@ export const LOGIN_STARTUP = gql`
 `;
 
 export const REGISTER_STARTUP = gql`
-  mutation register(
+  mutation startupRegister(
     $email: String!
     $company: String!
     $password: String!
     $confirmPassword: String!
-    $imageUrl: String!
     $industry: String!
+    $imageUrl: String!
     $location: String!
     $growthStage: String!
     $fundingStage: String!
   ) {
-    register(
+    startupRegister(
       registerInput: {
         username: $username
         email: $email
         company: $company
         password: $password
         confirmPassword: $confirmPassword
-        imageUrl: $imageUrl
         industry: $industry
+        imageUrl: $imageUrl
         location: $location
         growthStage: $growthStage
         fundingStage: $fundingStage

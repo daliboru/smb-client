@@ -20,7 +20,7 @@ const SinglePost = (props) => {
   if (!getPost) {
     postMarkup = (
       <main className='bg-gray-100 h-auto min-h-screen w-screen absolute top-0'>
-        <div class='max-w-7xl mx-auto sm:px-6 lg:px-8 py-32'>
+        <div className='max-w-7xl mx-auto sm:px-6 lg:px-8 py-32'>
           <p className='mt-2 my-auto text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl'>
             Loading...
           </p>
@@ -32,10 +32,14 @@ const SinglePost = (props) => {
       id,
       body,
       createdAt,
-      username,
       mailto,
       company,
       position,
+      industry,
+      email,
+      location,
+      growthStage,
+      fundingStage,
     } = getPost;
 
     const deletePostCallback = () => {
@@ -44,7 +48,7 @@ const SinglePost = (props) => {
 
     postMarkup = (
       <main className='bg-gray-100 h-auto min-h-screen w-screen absolute top-0'>
-        <div class='max-w-7xl mx-auto sm:px-6 lg:px-8 py-32'>
+        <div className='max-w-7xl mx-auto sm:px-6 lg:px-8 py-32'>
           <div className='bg-white shadow overflow-hidden sm:rounded-lg'>
             <div className='px-4 py-5 sm:px-6'>
               <h3 className='text-lg leading-6 font-medium text-gray-900'>
@@ -72,6 +76,22 @@ const SinglePost = (props) => {
                 </div>
                 <div className='bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
                   <dt className='text-sm font-medium text-gray-500'>
+                    Industrija
+                  </dt>
+                  <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+                    {industry}
+                  </dd>
+                </div>
+                <div className='bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+                  <dt className='text-sm font-medium text-gray-500'>
+                    Lokacija
+                  </dt>
+                  <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+                    {location}
+                  </dd>
+                </div>
+                <div className='bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+                  <dt className='text-sm font-medium text-gray-500'>
                     Kontakt email
                   </dt>
                   <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
@@ -87,14 +107,30 @@ const SinglePost = (props) => {
                 </div>
                 <div className='bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
                   <dt className='text-sm font-medium text-gray-500'>
+                    Growth stage
+                  </dt>
+                  <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+                    {growthStage}
+                  </dd>
+                </div>
+                <div className='bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+                  <dt className='text-sm font-medium text-gray-500'>
+                    Funding stage
+                  </dt>
+                  <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
+                    {fundingStage}
+                  </dd>
+                </div>
+                {/* <div className='bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+                  <dt className='text-sm font-medium text-gray-500'>
                     Opseg plate
                   </dt>
                   <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
                     $500 - $700
                   </dd>
-                </div>
-                {user && user.username === username && (
-                  <div className='bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
+                </div> */}
+                {user && user.email === email && (
+                  <div className='bg-gray-100 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
                     <dt className='text-sm font-medium text-gray-500'>
                       Delete post
                     </dt>
@@ -127,10 +163,15 @@ const FETCH_POST_QUERY = gql`
       id
       body
       createdAt
-      username
+      email
       company
       position
       mailto
+      imageUrl
+      industry
+      location
+      growthStage
+      fundingStage
     }
   }
 `;

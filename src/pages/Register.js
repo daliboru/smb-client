@@ -9,21 +9,21 @@ const Register = (props) => {
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
 
-  const { onChange, onSubmit, values } = useForm(registerUser, {
+  const { onChange, onSubmit, values } = useForm(startupRegister, {
     email: '',
     password: '',
     confirmPassword: '',
     company: '',
-    imageUrl: '',
     industry: '',
+    imageUrl: '',
     location: '',
     growthStage: '',
     fundingStage: '',
   });
 
-  const [addUser, { loading }] = useMutation(REGISTER_STARTUP, {
-    update(_, { data: { register: userData } }) {
-      context.login(userData);
+  const [addStartup, { loading }] = useMutation(REGISTER_STARTUP, {
+    update(_, { data: { startupRegister: startupDate } }) {
+      context.login(startupDate);
       props.history.push('/');
     },
     onError(err) {
@@ -32,8 +32,8 @@ const Register = (props) => {
     variables: values,
   });
 
-  function registerUser() {
-    addUser();
+  function startupRegister() {
+    addStartup();
   }
 
   return (

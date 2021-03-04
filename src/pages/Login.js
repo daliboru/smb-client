@@ -15,20 +15,21 @@ const Login = (props) => {
     password: '',
   });
 
-  const [loginUser, { loading }] = useMutation(LOGIN_STARTUP, {
-    update(_, { data: { login: userData } }) {
-      context.login(userData);
+  console.log(values);
+
+  const [loginStartup, { loading }] = useMutation(LOGIN_STARTUP, {
+    update(_, { data: { startupLogin: startupData } }) {
+      context.login(startupData);
       props.history.push('/');
     },
     onError(err) {
-      console.log(err);
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
     variables: values,
   });
 
   function loginUserCallback() {
-    loginUser();
+    loginStartup();
   }
 
   return (
