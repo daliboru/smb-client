@@ -1,6 +1,4 @@
-import { useContext } from 'react';
 import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
 
 import { FETCH_STARTUPS } from '../utils/graphql';
 import StartupTable from '../components/StartupTable';

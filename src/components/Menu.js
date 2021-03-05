@@ -453,9 +453,13 @@ To: "opacity-0 scale-95"
                         d='M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'
                       />
                     </svg>
-                    <span className='ml-3 text-base font-medium text-gray-900'>
-                      Analytics
-                    </span>
+                    <Link
+                      className='ml-3 text-base font-medium text-gray-900'
+                      to='/startups'
+                      onClick={() => setIsMobileMenu(false)}
+                    >
+                      Startupi
+                    </Link>
                   </a>
                   <a
                     href='#'
@@ -478,7 +482,7 @@ To: "opacity-0 scale-95"
                       />
                     </svg>
                     <span className='ml-3 text-base font-medium text-gray-900'>
-                      Engagement
+                      Ljudi
                     </span>
                   </a>
                   <a
@@ -502,7 +506,7 @@ To: "opacity-0 scale-95"
                       />
                     </svg>
                     <span className='ml-3 text-base font-medium text-gray-900'>
-                      Security
+                      Investitori
                     </span>
                   </a>
                   <a
@@ -526,7 +530,7 @@ To: "opacity-0 scale-95"
                       />
                     </svg>
                     <span className='ml-3 text-base font-medium text-gray-900'>
-                      Integrations
+                      O nama
                     </span>
                   </a>
                   <a
@@ -554,67 +558,6 @@ To: "opacity-0 scale-95"
                     </span>
                   </a>
                 </nav>
-              </div>
-            </div>
-            <div className='py-6 px-5 space-y-6'>
-              <div className='grid grid-cols-2 gap-y-4 gap-x-8'>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Pricing
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Docs
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Enterprise
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Blog
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Help Center
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Guides
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Security
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Events
-                </a>
-              </div>
-              <div>
-                <Link
-                  to=''
-                  onClick={logout}
-                  className='w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'
-                >
-                  Odjavite se
-                </Link>
               </div>
             </div>
           </div>
@@ -1043,9 +986,13 @@ To: "opacity-0 scale-95"
                         d='M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z'
                       />
                     </svg>
-                    <span className='ml-3 text-base font-medium text-gray-900'>
-                      Analytics
-                    </span>
+                    <Link
+                      className='ml-3 text-base font-medium text-gray-900'
+                      to='/startups'
+                      onClick={() => setIsMobileMenu(false)}
+                    >
+                      Startupi
+                    </Link>
                   </a>
                   <a
                     href='#'
@@ -1068,7 +1015,7 @@ To: "opacity-0 scale-95"
                       />
                     </svg>
                     <span className='ml-3 text-base font-medium text-gray-900'>
-                      Engagement
+                      Ljudi
                     </span>
                   </a>
                   <a
@@ -1092,7 +1039,7 @@ To: "opacity-0 scale-95"
                       />
                     </svg>
                     <span className='ml-3 text-base font-medium text-gray-900'>
-                      Security
+                      Investitori
                     </span>
                   </a>
                   <a
@@ -1116,7 +1063,7 @@ To: "opacity-0 scale-95"
                       />
                     </svg>
                     <span className='ml-3 text-base font-medium text-gray-900'>
-                      Integrations
+                      O nama
                     </span>
                   </a>
                   <a
@@ -1144,77 +1091,6 @@ To: "opacity-0 scale-95"
                     </span>
                   </a>
                 </nav>
-              </div>
-            </div>
-            <div className='py-6 px-5 space-y-6'>
-              <div className='grid grid-cols-2 gap-y-4 gap-x-8'>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Pricing
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Docs
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Enterprise
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Blog
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Help Center
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Guides
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Security
-                </a>
-                <a
-                  href='#'
-                  className='text-base font-medium text-gray-900 hover:text-gray-700'
-                >
-                  Events
-                </a>
-              </div>
-              <div>
-                <Link
-                  onClick={() => setIsMobileMenu(false)}
-                  to='/login'
-                  className='w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'
-                >
-                  Prijava
-                </Link>
-                <p className='mt-6 text-center text-base font-medium text-gray-500'>
-                  Niste registrovani?{' '}
-                  <Link
-                    onClick={() => setIsMobileMenu(false)}
-                    to='/register'
-                    className='text-indigo-600 hover:text-indigo-500'
-                  >
-                    Registracija
-                  </Link>
-                </p>
               </div>
             </div>
           </div>
