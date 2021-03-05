@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import moment from 'moment';
 import DeleteButton from '../components/DeleteButton';
 
+import { FETCH_POST_QUERY } from '../utils/graphql';
 import { AuthContext } from '../context/auth';
 
 const SinglePost = (props) => {
@@ -156,24 +157,5 @@ const SinglePost = (props) => {
 
   return postMarkup;
 };
-
-const FETCH_POST_QUERY = gql`
-  query($postId: ID!) {
-    getPost(postId: $postId) {
-      id
-      body
-      createdAt
-      email
-      company
-      position
-      mailto
-      imageUrl
-      industry
-      location
-      growthStage
-      fundingStage
-    }
-  }
-`;
 
 export default SinglePost;

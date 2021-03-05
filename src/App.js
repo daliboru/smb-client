@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import SinglePost from './pages/SinglePost';
 import NewPost from './pages/NewPost';
+import Startups from './pages/Startups';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <AuthRoute exact path='/register' component={Register} />
         <Route exact path='/newpost' component={NewPost} />
         <Route exact path='/posts/:postId' component={SinglePost} />
+        <Route exact path='/startups' component={Startups} />
       </Router>
     </AuthProvider>
   );
