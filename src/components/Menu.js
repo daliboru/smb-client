@@ -1,24 +1,33 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Menu } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import { AuthContext } from '../context/auth';
 
 const MenuBar = () => {
   const { user, logout } = useContext(AuthContext);
-  const pathname = window.location.pathname;
-  const path = pathname === '/' ? 'poslovi' : pathname.substr(1);
-  const [activeItem, setActiveItem] = useState(path);
   const [isFlyout, setIsFlyout] = useState(false);
   const [flyout, setFlyout] = useState('opacity-0 translate-y-1 ');
   const [isMobileMenu, setIsMobileMenu] = useState(false);
   const [mobileMenu, setMobileMenu] = useState('opacity-0 scale-95');
+  const [activePath, setActivePath] = useState('');
+  const [userSubmenu, setUserSubmenu] = useState('opacity-0 translate-y-1');
+  const [isUserSubmenu, setIsUserSubmenu] = useState(false);
 
   useEffect(() => {
+    setActivePath(window.location.pathname);
     if (isFlyout) {
       setFlyout('transition ease-out duration-200 opacity-100 translate-y-0');
     } else {
       setFlyout(
+        'transition ease-in duration-150 opacity-0 translate-y-1 hidden'
+      );
+    }
+    if (isUserSubmenu) {
+      setUserSubmenu(
+        'transition ease-out duration-200 opacity-100 translate-y-0'
+      );
+    } else {
+      setUserSubmenu(
         'transition ease-in duration-150 opacity-0 translate-y-1 hidden'
       );
     }
@@ -27,16 +36,21 @@ const MenuBar = () => {
     } else {
       setMobileMenu('transition ease-in duration-100 opacity-0 scale-95');
     }
-  }, [isFlyout, isMobileMenu]);
-
-  const handleItemClick = (e, { name }) => setActiveItem(name);
+  }, [isFlyout, isMobileMenu, isUserSubmenu, activePath]);
 
   const menuBar = user ? (
     <div className='relative bg-white z-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6'>
         <div className='flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10'>
           <div className='flex justify-start lg:w-0 lg:flex-1 '>
-            <Link to='/' onClick={() => setIsFlyout(false)}>
+            <Link
+              to='/'
+              onClick={() => {
+                setIsFlyout(false);
+                setIsUserSubmenu(false);
+                setActivePath('/');
+              }}
+            >
               <span className='sr-only'>Workflow</span>
               <img
                 className='h-8 w-auto sm:h-10'
@@ -74,34 +88,54 @@ const MenuBar = () => {
           <nav className='hidden md:flex space-x-10'>
             <Link
               to='/startups'
-              className='text-base font-medium text-gray-500 hover:text-gray-900'
-              onClick={() => setIsFlyout(false)}
+              className={
+                activePath === '/startups'
+                  ? 'text-base font-medium text-gray-900'
+                  : 'text-base font-medium text-gray-500 hover:text-gray-900'
+              }
+              onClick={() => {
+                setIsFlyout(false);
+                setIsUserSubmenu(false);
+                setActivePath('.');
+              }}
             >
               Startupi
             </Link>
             <Link
               to='#'
               className='text-base font-medium text-gray-500 hover:text-gray-900'
-              onClick={() => setIsFlyout(false)}
+              onClick={() => {
+                setIsFlyout(false);
+                setIsUserSubmenu(false);
+                setActivePath('.');
+              }}
             >
               Ljudi
             </Link>
             <Link
               to='#'
               className='text-base font-medium text-gray-500 hover:text-gray-900'
-              onClick={() => setIsFlyout(false)}
+              onClick={() => {
+                setIsFlyout(false);
+                setIsUserSubmenu(false);
+                setActivePath('.');
+              }}
             >
               Investitori
             </Link>
             <Link
               to='#'
               className='text-base font-medium text-gray-500 hover:text-gray-900'
-              onClick={() => setIsFlyout(false)}
+              onClick={() => {
+                setIsFlyout(false);
+                setIsUserSubmenu(false);
+                setActivePath('.');
+              }}
             >
               O nama
             </Link>
-            <div className='relative '>
-              {/* Item active: "text-gray-900", Item inactive: "text-gray-500" */}
+            {/* <div className='relative '>
+            
               <button
                 type='button'
                 onClick={() => setIsFlyout(!isFlyout)}
@@ -113,11 +147,6 @@ const MenuBar = () => {
                 aria-expanded='false'
               >
                 <span>Više</span>
-                {/*
-      Heroicon name: solid/chevron-down
-
-      Item active: "text-gray-600", Item inactive: "text-gray-400"
-    */}
                 <svg
                   className={
                     !isFlyout
@@ -136,16 +165,6 @@ const MenuBar = () => {
                   />
                 </svg>
               </button>
-              {/*
-    'Solutions' flyout menu, show/hide based on flyout menu state.
-
-    Entering: "transition ease-out duration-200"
-      From: "opacity-0 translate-y-1"
-      To: "opacity-100 translate-y-0"
-    Leaving: "transition ease-in duration-150"
-      From: "opacity-100 translate-y-0"
-      To: "opacity-0 translate-y-1"
-  */}
               <div
                 className={`${flyout} absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2`}
               >
@@ -155,7 +174,6 @@ const MenuBar = () => {
                       href='#'
                       className='-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50'
                     >
-                      {/* Heroicon name: outline/chart-bar */}
                       <svg
                         className='flex-shrink-0 h-6 w-6 text-indigo-600'
                         xmlns='http://www.w3.org/2000/svg'
@@ -185,7 +203,6 @@ const MenuBar = () => {
                       href='#'
                       className='-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50'
                     >
-                      {/* Heroicon name: outline/cursor-click */}
                       <svg
                         className='flex-shrink-0 h-6 w-6 text-indigo-600'
                         xmlns='http://www.w3.org/2000/svg'
@@ -215,7 +232,6 @@ const MenuBar = () => {
                       href='#'
                       className='-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50'
                     >
-                      {/* Heroicon name: outline/shield-check */}
                       <svg
                         className='flex-shrink-0 h-6 w-6 text-indigo-600'
                         xmlns='http://www.w3.org/2000/svg'
@@ -244,7 +260,6 @@ const MenuBar = () => {
                       href='#'
                       className='-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50'
                     >
-                      {/* Heroicon name: outline/view-grid */}
                       <svg
                         className='flex-shrink-0 h-6 w-6 text-indigo-600'
                         xmlns='http://www.w3.org/2000/svg'
@@ -274,7 +289,6 @@ const MenuBar = () => {
                       href='#'
                       className='-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50'
                     >
-                      {/* Heroicon name: outline/refresh */}
                       <svg
                         className='flex-shrink-0 h-6 w-6 text-indigo-600'
                         xmlns='http://www.w3.org/2000/svg'
@@ -307,7 +321,6 @@ const MenuBar = () => {
                         href='#'
                         className='-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100'
                       >
-                        {/* Heroicon name: outline/play */}
                         <svg
                           className='flex-shrink-0 h-6 w-6 text-gray-400'
                           xmlns='http://www.w3.org/2000/svg'
@@ -337,7 +350,6 @@ const MenuBar = () => {
                         href='#'
                         className='-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100'
                       >
-                        {/* Heroicon name: outline/phone */}
                         <svg
                           className='flex-shrink-0 h-6 w-6 text-gray-400'
                           xmlns='http://www.w3.org/2000/svg'
@@ -359,23 +371,103 @@ const MenuBar = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </nav>
           <div className='hidden md:flex items-center justify-end md:flex-1 lg:w-0'>
             <Link
               to='/newpost'
               className='ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700 newpost'
-              onClick={() => setIsFlyout(false)}
+              onClick={() => {
+                setIsFlyout(false);
+                setIsUserSubmenu(false);
+                setActivePath('.');
+              }}
             >
               Postavi oglas
             </Link>
-            <Link
-              to=''
-              onClick={logout}
-              className='pl-4 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900'
-            >
-              Odjavite se
-            </Link>
+            <div className='relative'>
+              {/* Item active: "text-gray-900", Item inactive: "text-gray-500" */}
+              <button
+                type='button'
+                onClick={() => {
+                  setIsUserSubmenu(!isUserSubmenu);
+                  setIsFlyout(false);
+                }}
+                aria-expanded='false'
+                className='focus:outline-none'
+              >
+                <img
+                  className='h-10 w-10 ml-8 cursor-pointer rounded-full border-indigo-600 border-solid border-2 object-cover object-center'
+                  src={user.imageUrl}
+                  alt
+                />
+              </button>
+              <div
+                className={`${userSubmenu} absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2`}
+              >
+                <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden'>
+                  <div className='relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8'>
+                    <Link
+                      to='#'
+                      onClick={() => {
+                        setIsUserSubmenu(false);
+                      }}
+                      className='-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50'
+                    >
+                      <svg
+                        className='flex-shrink-0 h-6 w-6 text-indigo-600'
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2}
+                          d='M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z'
+                        />
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2}
+                          d='M15 12a3 3 0 11-6 0 3 3 0 016 0z'
+                        />
+                      </svg>
+                      <span className='ml-4 text-base font-medium text-gray-900'>
+                        Podešavanja
+                      </span>
+                    </Link>
+                    <Link
+                      to=''
+                      onClick={() => {
+                        setIsUserSubmenu(false);
+                        logout();
+                      }}
+                      className='-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50'
+                    >
+                      <svg
+                        className='flex-shrink-0 h-6 w-6 text-indigo-600'
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                      >
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2}
+                          d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1'
+                        />
+                      </svg>
+                      <span className='ml-4 text-base font-medium text-gray-900'>
+                        Odjavite se
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -557,6 +649,15 @@ To: "opacity-0 scale-95"
                 </nav>
               </div>
             </div>
+            <div className='py-6 px-5 space-y-6'>
+              <Link
+                to=''
+                onClick={logout}
+                className='w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'
+              >
+                Odjavite se
+              </Link>
+            </div>
           </div>
         </div>
       )}
@@ -566,7 +667,14 @@ To: "opacity-0 scale-95"
       <div className='max-w-7xl mx-auto px-4 sm:px-6'>
         <div className='flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10'>
           <div className='flex justify-start lg:w-0 lg:flex-1'>
-            <Link to='/' onClick={() => setIsFlyout(false)}>
+            <Link
+              to='/'
+              onClick={() => {
+                setIsFlyout(false);
+                setIsUserSubmenu(false);
+                setActivePath('.');
+              }}
+            >
               <span className='sr-only'>Workflow</span>
               <img
                 className='h-8 w-auto sm:h-10'
@@ -604,34 +712,53 @@ To: "opacity-0 scale-95"
           <nav className='hidden md:flex space-x-10'>
             <Link
               to='/startups'
-              className='text-base font-medium text-gray-500 hover:text-gray-900'
-              onClick={() => setIsFlyout(false)}
+              className={
+                activePath === '/startups'
+                  ? 'text-base font-medium text-gray-900'
+                  : 'text-base font-medium text-gray-500 hover:text-gray-900'
+              }
+              onClick={() => {
+                setIsFlyout(false);
+                setIsUserSubmenu(false);
+                setActivePath('.');
+              }}
             >
               Startupi
             </Link>
             <Link
               to='#'
               className='text-base font-medium text-gray-500 hover:text-gray-900'
-              onClick={() => setIsFlyout(false)}
+              onClick={() => {
+                setIsFlyout(false);
+                setIsUserSubmenu(false);
+                setActivePath('.');
+              }}
             >
               Ljudi
             </Link>
             <Link
               to='#'
               className='text-base font-medium text-gray-500 hover:text-gray-900'
-              onClick={() => setIsFlyout(false)}
+              onClick={() => {
+                setIsFlyout(false);
+                setIsUserSubmenu(false);
+                setActivePath('.');
+              }}
             >
               Investitori
             </Link>
             <Link
               to='#'
               className='text-base font-medium text-gray-500 hover:text-gray-900'
-              onClick={() => setIsFlyout(false)}
+              onClick={() => {
+                setIsFlyout(false);
+                setIsUserSubmenu(false);
+                setActivePath('.');
+              }}
             >
               O nama
             </Link>
-            <div className='relative '>
-              {/* Item active: "text-gray-900", Item inactive: "text-gray-500" */}
+            {/* <div className='relative '>
               <button
                 type='button'
                 onClick={() => setIsFlyout(!isFlyout)}
@@ -643,11 +770,6 @@ To: "opacity-0 scale-95"
                 aria-expanded='false'
               >
                 <span>Više</span>
-                {/*
-        Heroicon name: solid/chevron-down
-
-        Item active: "text-gray-600", Item inactive: "text-gray-400"
-      */}
                 <svg
                   className={
                     !isFlyout
@@ -666,16 +788,7 @@ To: "opacity-0 scale-95"
                   />
                 </svg>
               </button>
-              {/*
-      'Solutions' flyout menu, show/hide based on flyout menu state.
-
-      Entering: "transition ease-out duration-200"
-        From: "opacity-0 translate-y-1"
-        To: "opacity-100 translate-y-0"
-      Leaving: "transition ease-in duration-150"
-        From: "opacity-100 translate-y-0"
-        To: "opacity-0 translate-y-1"
-    */}
+             
               <div
                 className={`${flyout} absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2`}
               >
@@ -685,7 +798,6 @@ To: "opacity-0 scale-95"
                       href='#'
                       className='-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50'
                     >
-                      {/* Heroicon name: outline/chart-bar */}
                       <svg
                         className='flex-shrink-0 h-6 w-6 text-indigo-600'
                         xmlns='http://www.w3.org/2000/svg'
@@ -715,7 +827,6 @@ To: "opacity-0 scale-95"
                       href='#'
                       className='-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50'
                     >
-                      {/* Heroicon name: outline/cursor-click */}
                       <svg
                         className='flex-shrink-0 h-6 w-6 text-indigo-600'
                         xmlns='http://www.w3.org/2000/svg'
@@ -745,7 +856,6 @@ To: "opacity-0 scale-95"
                       href='#'
                       className='-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50'
                     >
-                      {/* Heroicon name: outline/shield-check */}
                       <svg
                         className='flex-shrink-0 h-6 w-6 text-indigo-600'
                         xmlns='http://www.w3.org/2000/svg'
@@ -774,7 +884,6 @@ To: "opacity-0 scale-95"
                       href='#'
                       className='-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50'
                     >
-                      {/* Heroicon name: outline/view-grid */}
                       <svg
                         className='flex-shrink-0 h-6 w-6 text-indigo-600'
                         xmlns='http://www.w3.org/2000/svg'
@@ -804,7 +913,6 @@ To: "opacity-0 scale-95"
                       href='#'
                       className='-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50'
                     >
-                      {/* Heroicon name: outline/refresh */}
                       <svg
                         className='flex-shrink-0 h-6 w-6 text-indigo-600'
                         xmlns='http://www.w3.org/2000/svg'
@@ -837,7 +945,6 @@ To: "opacity-0 scale-95"
                         href='#'
                         className='-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100'
                       >
-                        {/* Heroicon name: outline/play */}
                         <svg
                           className='flex-shrink-0 h-6 w-6 text-gray-400'
                           xmlns='http://www.w3.org/2000/svg'
@@ -867,7 +974,6 @@ To: "opacity-0 scale-95"
                         href='#'
                         className='-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100'
                       >
-                        {/* Heroicon name: outline/phone */}
                         <svg
                           className='flex-shrink-0 h-6 w-6 text-gray-400'
                           xmlns='http://www.w3.org/2000/svg'
@@ -889,20 +995,28 @@ To: "opacity-0 scale-95"
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </nav>
           <div className='hidden md:flex items-center justify-end md:flex-1 lg:w-0'>
             <Link
               to='/login'
               className='whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900'
-              onClick={() => setIsFlyout(false)}
+              onClick={() => {
+                setIsFlyout(false);
+                setIsUserSubmenu(false);
+                setActivePath('.');
+              }}
             >
               Prijava
             </Link>
             <Link
               to='/register'
               className='ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'
-              onClick={() => setIsFlyout(false)}
+              onClick={() => {
+                setIsFlyout(false);
+                setIsUserSubmenu(false);
+                setActivePath('.');
+              }}
             >
               Registracija
             </Link>
@@ -1086,6 +1200,25 @@ To: "opacity-0 scale-95"
                   </a>
                 </nav>
               </div>
+            </div>
+            <div className='py-6 px-5 space-y-6'>
+              <Link
+                onClick={() => setIsMobileMenu(false)}
+                to='/login'
+                className='w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700'
+              >
+                Prijava
+              </Link>
+              <p className='mt-6 text-center text-base font-medium text-gray-500'>
+                Niste registrovani?{' '}
+                <Link
+                  onClick={() => setIsMobileMenu(false)}
+                  to='/register'
+                  className='text-indigo-600 hover:text-indigo-500'
+                >
+                  Registracija
+                </Link>
+              </p>
             </div>
           </div>
         </div>
