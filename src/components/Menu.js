@@ -403,7 +403,7 @@ const MenuBar = () => {
                 />
               </button>
               <div
-                className={`${userSubmenu} absolute z-10 -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2`}
+                className={`${userSubmenu} absolute z-10 md:-ml-28 lg:-ml-14  mt-3 transform px-2 max-w-md sm:px-0  lg:left-1/2 lg:-translate-x-1/2`}
               >
                 <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden'>
                   <div className='relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8'>
@@ -627,23 +627,13 @@ To: "opacity-0 scale-95"
                     className='-m-3 p-3 flex items-center rounded-md hover:bg-gray-50'
                   >
                     {/* Heroicon name: outline/refresh */}
-                    <svg
-                      className='flex-shrink-0 h-6 w-6 text-indigo-600'
-                      xmlns='http://www.w3.org/2000/svg'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      stroke='currentColor'
-                      aria-hidden='true'
-                    >
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth={2}
-                        d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15'
-                      />
-                    </svg>
+                    <img
+                      className='h-6 w-6 cursor-pointer rounded-full border-indigo-600 border-solid border-2 object-cover object-center'
+                      src={user.imageUrl}
+                      alt
+                    />
                     <span className='ml-3 text-base font-medium text-gray-900'>
-                      Automations
+                      Podešavanja
                     </span>
                   </a>
                 </nav>
