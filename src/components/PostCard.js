@@ -14,7 +14,7 @@ const PostCard = ({
   const slug = slugify(company);
 
   return (
-    <div className='xl:w-1/4 md:w-1/2 p-4'>
+    <div className=' w-full sm:w-full md:w-1/2 xl:w-1/4 p-4'>
       <div className='bg-gray-100 p-4 rounded-lg card'>
         <Link to={`/posts/${id}`}>
           <img
