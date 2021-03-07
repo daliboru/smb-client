@@ -385,7 +385,7 @@ const MenuBar = () => {
             >
               Postavi oglas
             </Link>
-            <div className='relative'>
+            <div className='relative flex'>
               {/* Item active: "text-gray-900", Item inactive: "text-gray-500" */}
               <button
                 type='button'
@@ -403,7 +403,7 @@ const MenuBar = () => {
                 />
               </button>
               <div
-                className={`${userSubmenu} absolute z-10 md:-ml-28 lg:-ml-14  mt-3 transform px-2 max-w-md sm:px-0  lg:left-1/2 lg:-translate-x-1/2`}
+                className={`${userSubmenu} absolute z-10 md:-ml-28 lg:-ml-14  mt-12 transform px-2 max-w-md sm:px-0  lg:left-1/2 lg:-translate-x-1/2`}
               >
                 <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden'>
                   <div className='relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8'>
