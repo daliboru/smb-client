@@ -14,12 +14,14 @@ const Register = (props) => {
     password: '',
     confirmPassword: '',
     company: '',
-    industry: '',
+    industry: 'Green-Tech',
     imageUrl: '',
     location: '',
-    growthStage: '',
-    fundingStage: '',
+    growthStage: 'Undisclosed',
+    fundingStage: 'Undisclosed',
   });
+
+  console.log(values);
 
   const [addStartup, { loading }] = useMutation(REGISTER_STARTUP, {
     update(_, { data: { startupRegister: startupDate } }) {
@@ -41,7 +43,7 @@ const Register = (props) => {
       {loading ? (
         <div className='loader'></div>
       ) : (
-        <div className='min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 absolute w-screen top-0'>
+        <div className='min-h-screen flex items-center justify-center bg-gray-50 pt-36 pb-20 px-4 sm:px-6 lg:px-8 absolute w-screen top-0'>
           <div className='max-w-md w-full space-y-8'>
             <div>
               <img
@@ -55,20 +57,32 @@ const Register = (props) => {
             </div>
             <form className='mt-8 space-y-6' onSubmit={onSubmit}>
               <input type='hidden' name='remember' defaultValue='true' />
-              <div className='rounded-md shadow-sm -space-y-px'>
+              <div className='grid gap-6'>
                 <div>
+                  <label
+                    htmlFor='email'
+                    className='block text-sm font-medium text-gray-700 mb-1'
+                  >
+                    Email
+                  </label>
                   <input
                     label='Email'
-                    placeholder='Email'
+                    placeholder='email@email.com'
                     name='email'
                     value={values.email}
                     onChange={onChange}
                     type='email'
                     error={errors.email ? true : false}
-                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                    className='appearance-none rounded-md shadow-sm relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                   />
                 </div>
                 <div>
+                  <label
+                    htmlFor='company'
+                    className='block text-sm font-medium text-gray-700 mb-1'
+                  >
+                    Ime startupa
+                  </label>
                   <input
                     label='Company'
                     placeholder='Ime startupa'
@@ -77,10 +91,16 @@ const Register = (props) => {
                     onChange={onChange}
                     type='text'
                     error={errors.company ? true : false}
-                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                    className='appearance-none rounded-md shadow-sm relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                   />
                 </div>
                 <div>
+                  <label
+                    htmlFor='imageUrl'
+                    className='block text-sm font-medium text-gray-700 mb-1'
+                  >
+                    URL cover slike
+                  </label>
                   <input
                     label='ImageUrl'
                     placeholder='Url fotografije loga firme'
@@ -89,58 +109,116 @@ const Register = (props) => {
                     onChange={onChange}
                     type='text'
                     error={errors.imageUrl ? true : false}
-                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                    className='appearance-none rounded-md shadow-sm relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                   />
                 </div>
                 <div>
-                  <input
+                  <label
+                    htmlFor='industry'
+                    className='block text-sm font-medium text-gray-700 mb-1'
+                  >
+                    Industrija
+                  </label>
+                  <select
                     label='Industry'
-                    placeholder='Industrija startupa'
-                    name='industry'
+                    id='industry'
                     value={values.industry}
                     onChange={onChange}
-                    type='text'
-                    error={errors.industry ? true : false}
-                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
-                  />
+                    name='industry'
+                    autoComplete='industry'
+                    className='mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                  >
+                    <option>Green-Tech</option>
+                    <option>Fin-tech</option>
+                    <option>Bio-tech</option>
+                    <option>Software</option>
+                    <option>Edu-tech</option>
+                    <option>Hardware</option>
+                    <option>Automotive</option>
+                    <option>SaaS</option>
+                    <option>Mobility</option>
+                    <option>On-demand</option>
+                    <option>E-Commerce</option>
+                    <option>Jobs & Recruiting</option>
+                    <option>Ad-tech</option>
+                    <option>Media</option>
+                    <option>Gaming</option>
+                    <option>Fashion</option>
+                    <option>Transportation</option>
+                    <option>Sports</option>
+                    <option>Food & Beverages</option>
+                    <option>Other</option>
+                  </select>
                 </div>
                 <div>
+                  <label
+                    htmlFor='location'
+                    className='block text-sm font-medium text-gray-700 mb-1'
+                  >
+                    Lokacija
+                  </label>
                   <input
                     label='Location'
-                    placeholder='Lokacija startupa'
+                    placeholder='Beograd, Srbija'
                     name='location'
                     value={values.location}
                     onChange={onChange}
                     type='text'
                     error={errors.location ? true : false}
-                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                    className='appearance-none rounded-md shadow-sm relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                   />
                 </div>
                 <div>
-                  <input
+                  <label
+                    htmlFor='growthStage'
+                    className='block text-sm font-medium text-gray-700 mb-1'
+                  >
+                    Growth Stage
+                  </label>
+                  <select
                     label='GrowthStage'
-                    placeholder='Growth stage'
-                    name='growthStage'
+                    id='growthStage'
                     value={values.growthStage}
                     onChange={onChange}
-                    type='text'
-                    error={errors.growthStage ? true : false}
-                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
-                  />
+                    name='growthStage'
+                    className='mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                  >
+                    <option>Undisclosed</option>
+                    <option>Idea/Prototype</option>
+                    <option>Early growth</option>
+                    <option>Late growth</option>
+                    <option>Mature</option>
+                  </select>
                 </div>
                 <div>
-                  <input
+                  <label
+                    htmlFor='fundingStage'
+                    className='block text-sm font-medium text-gray-700 mb-1'
+                  >
+                    Funding Stage
+                  </label>
+                  <select
                     label='FundingStage'
-                    placeholder='Funding stage'
-                    name='fundingStage'
+                    id='FundingStage'
                     value={values.fundingStage}
                     onChange={onChange}
-                    type='text'
-                    error={errors.fundingStage ? true : false}
-                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
-                  />
+                    name='fundingStage'
+                    className='mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'
+                  >
+                    <option>Undisclosed</option>
+                    <option>Bootstrapped</option>
+                    <option>Micro-Seed</option>
+                    <option>Seed</option>
+                    <option>Series A+</option>
+                  </select>
                 </div>
                 <div>
+                  <label
+                    htmlFor='password'
+                    className='block text-sm font-medium text-gray-700 mb-1'
+                  >
+                    Šifra
+                  </label>
                   <input
                     label='Šifra'
                     placeholder='Šifra'
@@ -149,10 +227,16 @@ const Register = (props) => {
                     onChange={onChange}
                     type='password'
                     error={errors.password ? true : false}
-                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                    className='appearance-none rounded-md shadow-sm relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                   />
                 </div>
                 <div>
+                  <label
+                    htmlFor='confirmPassword'
+                    className='block text-sm font-medium text-gray-700 mb-1'
+                  >
+                    Potvrdi Šifru
+                  </label>
                   <input
                     label='Potvrdi Šifru'
                     placeholder='Potvrdi Šifu'
@@ -161,7 +245,7 @@ const Register = (props) => {
                     onChange={onChange}
                     type='password'
                     error={errors.confirmPassword ? true : false}
-                    className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
+                    className='appearance-none rounded-md shadow-sm relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
                   />
                 </div>
               </div>
@@ -194,7 +278,7 @@ const Register = (props) => {
         </div>
       )}
       {Object.keys(errors).length > 0 && (
-        <div className='ui error message'>
+        <div className='ui error message max-w-md'>
           <ul className='list'>
             {Object.values(errors).map((val) => (
               <li key={val}>{val}</li>

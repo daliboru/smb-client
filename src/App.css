@@ -29,3 +29,6 @@
 .card {
   min-height: 19rem;
 }
+.ui.message {
+  margin: 2rem auto;
+}

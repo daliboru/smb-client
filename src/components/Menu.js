@@ -132,7 +132,7 @@ const MenuBar = () => {
                 setActivePath('.');
               }}
             >
-              O nama
+              Resursi
             </Link>
             {/* <div className='relative '>
             
@@ -619,7 +619,7 @@ To: "opacity-0 scale-95"
                       />
                     </svg>
                     <span className='ml-3 text-base font-medium text-gray-900'>
-                      O nama
+                      Resursi
                     </span>
                   </a>
                   <a
@@ -746,7 +746,7 @@ To: "opacity-0 scale-95"
                 setActivePath('.');
               }}
             >
-              O nama
+              Resursi
             </Link>
             {/* <div className='relative '>
               <button
@@ -1161,7 +1161,7 @@ To: "opacity-0 scale-95"
                       />
                     </svg>
                     <span className='ml-3 text-base font-medium text-gray-900'>
-                      O nama
+                      Resursi
                     </span>
                   </a>
                   <a

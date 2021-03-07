@@ -141,7 +141,7 @@ const Login = (props) => {
         </div>
       )}
       {Object.keys(errors).length > 0 && (
-        <div className='ui error message'>
+        <div className='ui error message max-w-md'>
           <ul className='list'>
             {Object.values(errors).map((val) => (
               <li key={val}>{val}</li>

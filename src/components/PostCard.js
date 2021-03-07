@@ -1,15 +1,17 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Card, Image } from 'semantic-ui-react';
 import moment from 'moment';
 
 import { AuthContext } from '../context/auth';
 import DeleteButton from './DeleteButton';
+import { slugify } from '../utils/helpers';
 
 const PostCard = ({
-  post: { company, position, username, id, createdAt, imageUrl, email },
+  post: { company, position, id, createdAt, imageUrl, email },
 }) => {
   const { user } = useContext(AuthContext);
+
+  const slug = slugify(company);
 
   return (
     <div className='xl:w-1/4 md:w-1/2 p-4'>
@@ -23,7 +25,7 @@ const PostCard = ({
         </Link>
         <Link
           className='tracking-widest text-indigo-500 text-xs font-medium title-font'
-          to={`/users/${username}`}
+          to={`/users/${slug}`}
         >
           {company}
         </Link>
