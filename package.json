@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^12.6.3",
     "@tinymce/tinymce-react": "^3.10.2",
     "apollo-link-context": "^1.0.20",
+    "emailjs-com": "^2.6.4",
     "graphql": "^15.5.0",
     "graphql-tag": "^2.11.0",
     "jwt-decode": "^3.1.2",
