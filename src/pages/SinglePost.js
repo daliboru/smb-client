@@ -41,13 +41,23 @@ const SinglePost = (props) => {
       email_address: toSend.reply_to,
     });
     send(
-      process.env.REACT_APP_.SERVICE_ID,
-      process.env.REACT_APP_.TEMPLATE_ID,
+      process.env.REACT_APP_SERVICE_ID,
+      process.env.REACT_APP_TEMPLATE_ID,
       toSend,
-      process.env.REACT_APP_.USER_ID
+      process.env.REACT_APP_USER_ID
     ).then(
       function (response) {
         console.log('SUCCESS!', response.status, response.text);
+        setToSend({
+          from_firstName: '',
+          from_lastName: '',
+          message: '',
+          cv: '',
+          email_address: '',
+          reply_to: '',
+          position: '',
+          to: '',
+        });
       },
       function (error) {
         console.log('FAILED...', error);
