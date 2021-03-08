@@ -17,6 +17,7 @@ const SinglePost = (props) => {
       postId,
     },
   });
+
   const [toSend, setToSend] = useState({
     from_firstName: '',
     from_lastName: '',
@@ -28,41 +29,39 @@ const SinglePost = (props) => {
     to: '',
   });
 
+  // setToSend({
+  //   ...toSend,
+  //   [toSend.position]: getPost.position,
+  //   to: getPost.company,
+  //   email_address: toSend.reply_to,
+  // });
+
   const handleChange = (event) => {
-    setToSend({ ...toSend, [event.target.name]: event.target.value });
+    setToSend({
+      ...toSend,
+      to: getPost.company,
+      email_address: toSend.reply_to,
+      position: getPost.position,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const sendEmail = (e) => {
+    console.log(toSend);
+
     e.preventDefault();
-    setToSend({
-      ...toSend,
-      position: getPost.position,
-      to: getPost.company,
-      email_address: toSend.reply_to,
-    });
     send(
       process.env.REACT_APP_SERVICE_ID,
       process.env.REACT_APP_TEMPLATE_ID,
       toSend,
       process.env.REACT_APP_USER_ID
-    ).then(
-      function (response) {
+    )
+      .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
-      },
-      function (error) {
-        console.log('FAILED...', error);
-      }
-    );
-    setToSend({
-      from_firstName: '',
-      from_lastName: '',
-      message: '',
-      cv: '',
-      email_address: '',
-      reply_to: '',
-      position: '',
-      to: '',
-    });
+      })
+      .catch((err) => {
+        console.log('FAILED...', err);
+      });
   };
 
   let postMarkup;
