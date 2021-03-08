@@ -48,21 +48,21 @@ const SinglePost = (props) => {
     ).then(
       function (response) {
         console.log('SUCCESS!', response.status, response.text);
-        setToSend({
-          from_firstName: '',
-          from_lastName: '',
-          message: '',
-          cv: '',
-          email_address: '',
-          reply_to: '',
-          position: '',
-          to: '',
-        });
       },
       function (error) {
         console.log('FAILED...', error);
       }
     );
+    setToSend({
+      from_firstName: '',
+      from_lastName: '',
+      message: '',
+      cv: '',
+      email_address: '',
+      reply_to: '',
+      position: '',
+      to: '',
+    });
   };
 
   let postMarkup;
