@@ -14,6 +14,7 @@ import Register from './pages/Register';
 import SinglePost from './pages/SinglePost';
 import NewPost from './pages/NewPost';
 import Startups from './pages/Startups';
+import Confirmation from './pages/Confirmation';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route exact path='/newpost' component={NewPost} />
         <Route exact path='/posts/:postId' component={SinglePost} />
         <Route exact path='/startups' component={Startups} />
+        <Route exact path='/confirmation' component={Confirmation} />
       </Router>
     </AuthProvider>
   );

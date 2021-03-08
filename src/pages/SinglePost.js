@@ -58,6 +58,7 @@ const SinglePost = (props) => {
     )
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
+        props.history.push('/confirmation');
       })
       .catch((err) => {
         console.log('FAILED...', err);
