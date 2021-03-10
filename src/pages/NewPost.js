@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { Editor } from '@tinymce/tinymce-react';
 
 import { useForm } from '../utils/hooks';
-import { FETCH_POSTS_QUERY } from '../utils/graphql';
+import { FETCH_POSTS_QUERY, CREATE_POST_MUTATION } from '../utils/graphql';
 import { useState } from 'react';
 
 const NewPost = (props) => {
@@ -213,21 +213,5 @@ const NewPost = (props) => {
     </div>
   );
 };
-const CREATE_POST_MUTATION = gql`
-  mutation createPost($body: String!, $position: String!, $mailto: String!) {
-    createPost(body: $body, position: $position, mailto: $mailto) {
-      id
-      createdAt
-      body
-      company
-      position
-      mailto
-      imageUrl
-      industry
-      location
-      growthStage
-      fundingStage
-    }
-  }
-`;
+
 export default NewPost;

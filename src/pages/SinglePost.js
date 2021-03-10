@@ -2,14 +2,12 @@ import { useContext, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import moment from 'moment';
 import DeleteButton from '../components/DeleteButton';
-import { init, send } from 'emailjs-com';
+import { send } from 'emailjs-com';
 
 import { FETCH_POST_QUERY } from '../utils/graphql';
 import { AuthContext } from '../context/auth';
 
 const SinglePost = (props) => {
-  init('user_UsM8uv9yNxeFqt9Qgp0sV');
-
   const postId = props.match.params.postId;
   const { user } = useContext(AuthContext);
   const { data: { getPost } = {} } = useQuery(FETCH_POST_QUERY, {

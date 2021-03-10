@@ -33,6 +33,24 @@ export const FETCH_POST_QUERY = gql`
   }
 `;
 
+export const CREATE_POST_MUTATION = gql`
+  mutation createPost($body: String!, $position: String!, $mailto: String!) {
+    createPost(body: $body, position: $position, mailto: $mailto) {
+      id
+      createdAt
+      body
+      company
+      position
+      mailto
+      imageUrl
+      industry
+      location
+      growthStage
+      fundingStage
+    }
+  }
+`;
+
 export const FETCH_STARTUPS = gql`
   query getStartups(
     $company: String

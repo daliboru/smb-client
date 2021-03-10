@@ -103,7 +103,7 @@ const Register = (props) => {
                   </label>
                   <input
                     label='ImageUrl'
-                    placeholder='Url fotografije loga firme'
+                    placeholder='Url slike'
                     name='imageUrl'
                     value={values.imageUrl}
                     onChange={onChange}
