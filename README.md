@@ -14,4 +14,4 @@ Use this user to for testing:
 ### `password: 123456`
 
 ## Caveats
-In the navbar, 'Ljudi', 'Investitori', 'O nama' are not yet built
+In the navbar, 'Ljudi', 'Investitori', 'Resursi' are not yet built
